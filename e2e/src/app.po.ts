@@ -1,4 +1,5 @@
 import { browser, by, element } from 'protractor';
+import {TalkSubmissionPage} from './talk-submission.page';
 
 export class AppPage {
   navigateTo() {
@@ -6,6 +7,11 @@ export class AppPage {
   }
 
   getTitleText() {
-    return element(by.css('app-root .content span')).getText() as Promise<string>;
+    return element(by.css('[data-test=title]')).getText() as Promise<string>;
+  }
+
+  navigateToTalkSubmission(): TalkSubmissionPage {
+    element(by.css('[data-test=talk-submission]')).click();
+    return new TalkSubmissionPage();
   }
 }
